@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Ponto laranja do i -->
+  <circle cx="16" cy="6" r="5" fill="#F7931E"/>
+  <!-- Corpo do i -->
+  <rect x="11" y="14" width="10" height="16" rx="2" fill="#1A1A1A"/>
+</svg>

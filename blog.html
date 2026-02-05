@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - IAGRAM | Incubadora Tecnológica e do Agronegócio de Mossoró</title>
+    <meta name="description" content="Blog da IAGRAM com notícias, artigos e dicas sobre empreendedorismo, startups, tecnologia e agronegócio.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo_iagram.jpg" alt="IAGRAM Logo">
+                </a>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="index.html#jornada" class="nav-link">Jornada</a></li>
+                    <li><a href="index.html#empresas" class="nav-link">Startups</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="index.html#contato" class="nav-link">Contato</a></li>
+                </ul>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <span class="hero-tag">Blog IAGRAM</span>
+                <h1 class="blog-hero-title">Notícias e Artigos</h1>
+                <p class="blog-hero-description">Acompanhe as últimas novidades sobre empreendedorismo, inovação, startups e o ecossistema da IAGRAM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="section blog-section">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="blog-loading" class="blog-loading">
+                <p>Carregando artigos...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="blog-empty" class="blog-empty" style="display: none;">
+                <p>Nenhum artigo publicado ainda. Em breve teremos novidades!</p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid" id="blog-grid" style="display: none;">
+                <!-- Posts serão carregados aqui via JavaScript -->
+            </div>
+
+            <!-- Newsletter -->
+            <div class="blog-newsletter">
+                <div class="newsletter-content">
+                    <h3>Receba Novidades</h3>
+                    <p>Inscreva-se para receber artigos, dicas e novidades sobre empreendedorismo e inovação.</p>
+                </div>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <button type="submit" class="btn btn-primary">Inscrever</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Post Completo -->
+    <div id="post-modal" class="post-modal">
+        <div class="post-modal-content">
+            <button class="post-modal-close" id="post-modal-close">&times;</button>
+            <div class="post-modal-header">
+                <span class="blog-category" id="modal-categoria"></span>
+                <span class="blog-date" id="modal-data"></span>
+            </div>
+            <h2 id="modal-titulo"></h2>
+            <img id="modal-imagem" class="post-modal-image" style="display: none;" alt="">
+            <div id="modal-conteudo" class="post-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo_iagram.jpg" alt="IAGRAM Logo" class="footer-logo">
+                    <p class="footer-description">Incubadora Tecnológica e do Agronegócio de Mossoró - Transformando ideias em negócios de sucesso através de uma jornada gamificada única.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="index.html#jornada">Jornada</a></li>
+                        <li><a href="index.html#empresas">Startups</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Realizadores</h4>
+                    <ul>
+                        <li><a href="#">UFERSA</a></li>
+                        <li><a href="#">PROEC</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Mossoró, RN - Brasil</p>
+                    <p>contato@iagram.org.br</p>
+                    <p>(84) 3333-0000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 IAGRAM - Incubadora Tecnológica e do Agronegócio de Mossoró. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Configuração do Blog =====
+        // Cole aqui a URL do Google Apps Script do Blog
+        const BLOG_API_URL = 'https://script.google.com/macros/s/AKfycbzYCygqH4BGMW7oJWePs3sMVdcS7fvBvv1dxQjWqCfRx_dXWUHPBKGRVtBv0Ilrjjp-pg/exec';
+
+        // ===== Elementos do DOM =====
+        const blogGrid = document.getElementById('blog-grid');
+        const blogLoading = document.getElementById('blog-loading');
+        const blogEmpty = document.getElementById('blog-empty');
+        const postModal = document.getElementById('post-modal');
+        const modalClose = document.getElementById('post-modal-close');
+
+        // ===== Cores das categorias =====
+        const categoryColors = {
+            'jornada': '',
+            'eventos': 'orange',
+            'startups': 'green',
+            'capacitação': '',
+            'agronegócio': 'green',
+            'tecnologia': 'orange'
+        };
+
+        // ===== Carregar Posts =====
+        async function loadPosts() {
+            try {
+                console.log('Carregando posts de:', BLOG_API_URL);
+                const response = await fetch(BLOG_API_URL);
+                console.log('Response status:', response.status);
+
+                const text = await response.text();
+                console.log('Response text:', text);
+
+                let posts;
+                try {
+                    posts = JSON.parse(text);
+                } catch (parseError) {
+                    console.error('Erro ao fazer parse do JSON:', parseError);
+                    blogLoading.innerHTML = '<p>Erro no formato dos dados. Verifique o Google Apps Script.</p>';
+                    return;
+                }
+
+                console.log('Posts recebidos:', posts);
+                blogLoading.style.display = 'none';
+
+                if (!posts || posts.length === 0) {
+                    blogEmpty.style.display = 'block';
+                    return;
+                }
+
+                blogGrid.style.display = 'grid';
+                renderPosts(posts);
+            } catch (error) {
+                console.error('Erro ao carregar posts:', error);
+                blogLoading.innerHTML = '<p>Erro ao carregar artigos. Verifique o console para mais detalhes.</p>';
+            }
+        }
+
+        // ===== Renderizar Posts =====
+        function renderPosts(posts) {
+            blogGrid.innerHTML = posts.map((post, index) => {
+                const colorClass = categoryColors[post.categoria.toLowerCase()] || '';
+                const formattedDate = formatDate(post.data);
+
+                const imageHtml = post.imagem
+                    ? `<img src="${post.imagem}" alt="${post.titulo}" class="blog-card-img">`
+                    : `<div class="blog-image-placeholder ${colorClass}"><span>${post.categoria}</span></div>`;
+
+                return `
+                    <article class="blog-card" onclick="openPost(${index})" data-index="${index}">
+                        <div class="blog-card-image">
+                            ${imageHtml}
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span class="blog-category">${post.categoria}</span>
+                                <span class="blog-date">${formattedDate}</span>
+                            </div>
+                            <h3 class="blog-card-title">${post.titulo}</h3>
+                            <p class="blog-card-excerpt">${post.resumo}</p>
+                            <span class="blog-card-link">Ler mais</span>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            // Salvar posts para o modal
+            window.postsData = posts;
+        }
+
+        // ===== Formatar Data =====
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr);
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            return date.toLocaleDateString('pt-BR', options);
+        }
+
+        // ===== Abrir Post no Modal =====
+        function openPost(index) {
+            const post = window.postsData[index];
+
+            document.getElementById('modal-titulo').textContent = post.titulo;
+            document.getElementById('modal-categoria').textContent = post.categoria;
+            document.getElementById('modal-data').textContent = formatDate(post.data);
+
+            const modalImagem = document.getElementById('modal-imagem');
+            if (post.imagem) {
+                modalImagem.src = post.imagem;
+                modalImagem.alt = post.titulo;
+                modalImagem.style.display = 'block';
+            } else {
+                modalImagem.style.display = 'none';
+                modalImagem.src = '';
+            }
+
+            document.getElementById('modal-conteudo').innerHTML = formatContent(post.conteudo);
+
+            postModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ===== Formatar Conteúdo =====
+        function formatContent(content) {
+            if (!content) return '';
+            // Converte quebras de linha em parágrafos
+            return content.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+        }
+
+        // ===== Fechar Modal =====
+        function closeModal() {
+            postModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        postModal.addEventListener('click', (e) => {
+            if (e.target === postModal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ===== Mobile Navigation =====
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // ===== Newsletter =====
+        const newsletterForm = document.getElementById('newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Inscrição realizada com sucesso!');
+            newsletterForm.reset();
+        });
+
+        // ===== Inicializar =====
+        if (BLOG_API_URL !== 'COLE_URL_DO_BLOG_AQUI') {
+            loadPosts();
+        } else {
+            blogLoading.innerHTML = '<p>Blog em configuração. Em breve teremos novidades!</p>';
+        }
+    </script>
+</body>
+</html>
