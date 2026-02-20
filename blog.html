@@ -100,7 +100,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="assets/logo_iagram.jpg" alt="IAGRAM Logo" class="footer-logo">
                     <p class="footer-description">Incubadora Tecnológica e do Agronegócio de Mossoró - Transformando ideias em negócios de sucesso através de uma jornada gamificada única.</p>
                 </div>
                 <div class="footer-links">
@@ -248,15 +247,16 @@
                 modalImagem.src = '';
             }
 
-            document.getElementById('modal-conteudo').innerHTML = formatContent(post.conteudo);
+            document.getElementById('modal-conteudo').innerHTML = formatContent(post.conteudo, post.contentType);
 
             postModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         // ===== Formatar Conteúdo =====
-        function formatContent(content) {
+        function formatContent(content, contentType) {
             if (!content) return '';
+            if (contentType === 'html') return content;
             return marked.parse(content);
         }
 
