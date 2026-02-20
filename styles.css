@@ -854,6 +854,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 48px;
     width: auto;
     margin-bottom: 20px;
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px;
 }
 
 .footer-description {
